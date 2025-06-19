@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * {
+      color: red;
+    } */
+
+    header {
+      background-color: yellow;
+      color: rgb(60, 60, 246);
+      font-size: 30pt;
+    }
+
+    #title {
+      border: 2px dotted green;
+    }
+
+    .contents {
+      background-color: aqua;
+    }
+
+    .some {
+      color: blueviolet;
+    }
+
+    a[name="top"] {
+      background-color: black;
+      color: white;
+    }
+
+    [data-title ^= "bangry"] {
+      background-color: gold;
+    }
+
+    header, nav, aside, #title {
+      border: 5px solid red;
+    }
+
+    #box  div{
+      background-color: #ff0000;
+    }
+
+    h1 + h2 {
+      border: 1px solid blue;
+    }
+
+    p::after{
+      content: "<h2>동적추가</h2>";
+      background-color: yellow;
+      
+    }
+
+    ::selection{
+      background-color: yellow;
+      color: red;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    a:active {
+      background-color: blue;
+    }
+    a:visited {
+      text-decoration: none;
+      color: black;
+    }
+
+    input:focus {
+      background-color: orange;
+    }
+
+  </style>
+</head>
+
+<body>
+  <a name="top">문서의 첫번째 위치</a>
+
+  <header>로고, 메뉴, 검색</header>
+  <nav>내부, 외부 리소스 연결하는 메뉴들...</nav>
+  <aside>부메뉴</aside>
+  <main>
+    <section>
+      <h2>오늘부터 CSS3 공부입니다..</h2>
+      <article>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Natus, quasi quae. Ullam ut suscipit asperiores provident beatae.
+        Nam, dolores! Fugiat nam est consectetur maiores laboriosam perspiciatis provident consequuntur nulla ab.
+      </article>
+    </section>
+    <section>논리적 주 내용</section>
+    <section>논리적 주 내용</section>
+    <section>논리적 주 내용</section>
+    <section>논리적 주 내용</section>
+  </main>
+
+  <div id="title">아이디 선택자 연습</div>
+
+  <p class="contents some">클래스 선택자 연습입니다...</p>
+  <p class="contents some">클래스 선택자 연습입니다...</p>
+  <p class="contents">클래스 선택자 연습입니다...</p>
+  <span class="contents">클래스 선택자 연습입니다...</span>
+  <span class="contents">클래스 선택자 연습입니다...</span>
+  <span class="contents">클래스 선택자 연습입니다...</span>
+
+
+  <a href="#">현재페이지</a>
+
+
+  <pre>
+    ====================================
+    ddddddddddddddddddddddddddddddddd
+    ===================================
+    xxxx
+    xxxx
+    xxxxx
+    xxxxx
+    xxxx
+    xxxx
+  </pre>
+
+  <footer>발입니다요...</footer>
+
+  <a href="#top">처음으로</a>
+  <!-- 사용자 추가 속성 -->
+  <p data-title="bangry">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, voluptas molestias provident temporibus accusantium veniam magnam, dolorem error reiciendis totam maiores porro, modi obcaecati quidem. Pariatur, laboriosam! Autem, tempora inventore.</p>
+  <p data-name="bangry">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, voluptas molestias provident temporibus accusantium veniam magnam, dolorem error reiciendis totam maiores porro, modi obcaecati quidem. Pariatur, laboriosam! Autem, tempora inventore.</p>
+
+  <div id="box">
+    <ul>
+      <li>
+        <div>나는 자식입니다..</div>
+      </li>
+      <li>목록입니다...</li>
+    </ul>
+  </div>
+
+  <h2>XXXXXXXXXXX</h2>
+  <h1>YYYYYYYYYYY</h1>
+  <h2>XXXXXXXXXXX</h2>
+  <h2>XXXXXXXXXXX</h2>
+
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam praesentium perferendis ullam tempore tenetur repudiandae, mollitia beatae soluta autem hic, magni cumque a odit modi? Aspernatur maxime incidunt rem quidem?</p>
+
+  <a href="https://www.naver.com">네이바</a>
+
+  <input type="text">
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  ..........
+
+
+
+</body>
+
+</html>

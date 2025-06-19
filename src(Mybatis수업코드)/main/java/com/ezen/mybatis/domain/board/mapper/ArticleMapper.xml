@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.ezen.mybatis.domain.board.mapper.ArticleMapper">
+
+	<!-- 요청 페이지, 페이지당 보여지는 목록 갯수에 따른 목록 반환 -->
+	<select id="findByAll" resultType="Article" parameterType="com.ezen.mybatis.domain.common.web.PageParams">
+		SELECT subject,
+			   writer,
+		       regdate, 
+       		   hitcount 
+		FROM   (SELECT  CEIL(rownum / 10) request_page, 
+               			subject, 
+               			writer, 
+               			TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI') regdate, 
+               			hitcount 
+        		FROM   (SELECT  subject, 
+                           		writer, 
+                           		regdate, 
+                           		hitcount 
+                    	FROM    article 
+                    	WHERE   <choose>
+        							<when test="type == 'writer'">
+            							writer = #{input}
+        							</when>
+        							<when test="type == 'subject'">
+            							subject LIKE '%' || #{input} || '%'
+        							</when>
+        							<when test="type == 'content'">
+            							content LIKE '%' || #{input} || '%'
+        							</when>
+    							</choose>
+    							AND board_id = #{boardId}
+                   		ORDER  BY group_no DESC, order_no ASC)) 
+		WHERE  request_page = 1
+	</select>
+	
+	<!-- 페이징 계산에 필요한 게시글 전체 개수 반환 -->
+	<select id="getCountAll" resultType="int" parameterType="com.ezen.mybatis.domain.common.web.PageParams">
+		SELECT COUNT(article_id)
+		FROM   article
+		WHERE  
+    	<choose>
+        	<when test="type == 'writer'">
+            	writer = #{input}
+        	</when>
+        	<when test="type == 'subject'">
+            	subject LIKE '%' || #{input} || '%'
+        	</when>
+        	<when test="type == 'content'">
+            	content LIKE '%' || #{input} || '%'
+        	</when>
+    	</choose>
+    	AND board_id = #{boardId}
+	</select>
+	
+	<!-- 신규 게시글 등록 -->
+   <insert id="create" parameterType="Article" >
+      INSERT INTO article
+                      (article_id,
+                     board_id,
+                     writer,
+                     subject,
+                     content,
+                     passwd,
+                     group_no,
+                     level_no,
+                     order_no)
+      VALUES      (article_id_seq.NEXTVAL,
+                   #{boardId},
+                   #{writer},
+                   #{subject},
+                   #{content},
+                   #{passwd},
+                   article_id_seq.CURRVAL,
+                   #{levelNo},
+                   #{orderNo})
+   </insert>
+   
+   <!-- 게시글 수정 -->
+   <update id="updateArticle" parameterType="map">
+      UPDATE article
+      <set>
+           <if test="subject != null">subject = #{subject},</if>
+           <if test="content != null">content = #{content},</if>
+       </set>
+       WHERE article_id = #{articleId}
+   </update>
+   
+   
+   <!-- 게시글 삭제 -->
+   <delete id="removeArticle" parameterType="map">
+      DELETE FROM article
+      WHERE      article_id = #{articleId}
+      AND         passwd = #{passwd}
+   </delete>
+	
+	<!-- 답글 생성 -->
+   <insert id="reply" parameterType="Article">
+      INSERT INTO article
+                  (article_id,
+                   board_id,
+                   writer,
+                   subject,
+                   content,
+                   passwd,
+                   group_no,
+                   level_no,
+                   order_no)
+      VALUES      (article_id_seq.NEXTVAL,
+                   #{boardId},
+                   #{writer},
+                   #{subject},
+                   #{content},
+                   #{passwd},
+                   #{groupNo},
+                   #{levelNo} + 1,
+                   (SELECT MAX(order_no) + 1
+                    FROM   article
+                    WHERE  board_id = #{boardId}
+                           AND group_no = #{groupNo}))
+   
+   </insert>
+   
+   <!-- 게시글 상세보기 (게시판id 파라미터 받는다는 가정) -->
+   <select id="openArticle" parameterType="int" resultType="Article">
+      SELECT    article_id AS articleId,
+            	writer,
+            	subject,
+            	content,
+            	regdate
+      FROM   	article
+      WHERE     article_id = #{articleId}
+   </select>
+   
+	
+</mapper>

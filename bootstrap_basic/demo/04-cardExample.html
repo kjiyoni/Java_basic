@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>명언 카드</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<!-- 배경색 불투명도 설정 -->
+
+<body class="bg-danger bg-opacity-10">
+  <section class="container text-center">
+    <h1 class="mt-5 py-5 fw-bold">오늘의 명언</h1>
+    <!-- 독립적인 콘텐츠를 위해 figue 태그 사용 -->
+    <!-- w-75: 폭을  부모요소의 75% 설정 -->
+    <!-- m-auto : 중앙 정렬 -->
+    <!-- 그림자 설정 -->
+    <!-- 패딩, 여백, 귀퉁이 둥글게, 배경색, 투명도 설정, 글자색 변경 -->
+    <figure class="w-75 m-auto shadow-lg p-5 my-5 rounded-4 bg-danger bg-opacity-75 text-white">
+      <blockquote class="blockquote">
+        <p>You are the master of your fate, The captain of your soul</p>
+        <!-- 한글은 작게 표현 -->
+        <p class="small">나는 내 운명의 주인이며, 나는 내 영혼의 선장이다.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer pt-4 text-white">
+        윌리엄 어니스트 헨리
+      </figcaption>
+    </figure>
+
+    <a href="#" class="btn btn-outline-dark">상세보기</a>
+  </section>
+
+  <!-- 부트스트랩의 기본 스타일만 사용할 것이므로 자바스크립트 외부 파일 삭제 -->
+</body>
+
+</html>

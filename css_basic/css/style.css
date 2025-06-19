@@ -1,0 +1,13 @@
+/* 선택자 선언 */
+header {
+  background-color: yellowgreen;
+  color: blue;
+}
+
+nav {
+  color: red;
+}
+
+aside {
+  border: 1p solid #ee0b0b ;
+}

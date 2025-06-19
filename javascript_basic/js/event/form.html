@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 이벤트 처리</title>
+    <script defer src="FormEventExample.js"></script>
+    <script defer src="validator.js"></script>
+</head>
+
+<body>
+    <form action="#" name="memberRegister">
+        <table width="900" " border=" 1">
+            <caption>회원가입</caption>
+            <tr>
+                <th> 이름</th>
+                <!-- <td><input type="text" name="name" required pattern="^[가-힣a-zA-Z]{2,5}$"> <span>※ 이름은 2~5자여야 합니다.</span></td> -->
+                <td><input type="text" name="uname"> <span>※ 이름은 2~5자여야 합니다.</span></td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" name="uid">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><input type="password" name="upassword"> 영문/숫자포함 8자 이상
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호 확인</th>
+                <td><input type="password" name="re-upassword"></td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>
+                    <input type='text' name="email">@
+                    <input type='text' name="email_dns">
+                    <select name="emailaddress">
+                        <option value="">직접입력</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="empal.com">empal.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="msn.com">msn.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="nate.com">nate.com</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>전화번호</th>
+                <td><input type="number" name="tel1"> -
+                    <input type="number" name="tel2"> -
+                    <input type="number" name="tel3">
+                </td>
+            </tr>
+
+            <tr>
+                <th>직업</th>
+                <td>
+                    <select name='job' size='1'>
+                        <option value=''>선택하세요</option>
+                        <option value='1'>학생</option>
+                        <option value='2'>컴퓨터/인터넷</option>
+                        <option value='3'>언론</option>
+                        <option value='4'>공무원</option>
+                        <option value='5'>군인</option>
+                        <option value='6'>서비스업</option>
+                        <option value='7'>교육</option>
+                        <option value='8'>금융/증권/보험업</option>
+                        <option value='9'>유통업</option>
+                        <option value='10'>예술</option>
+                        <option value='11'>의료</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th> 관심분야 </th>
+                <td>
+                    <input type='checkbox' name='interest' value='s'> 생두
+                    <input type='checkbox' name='interest' value='o'> 원두
+                    <input type='checkbox' name='interest' value='l'> 로스팅
+                    <input type='checkbox' name='interest' value='h'> 핸드드립
+                    <input type='checkbox' name='interest' value='a'> 에스프레소
+                    <input type='checkbox' name='interest' value='c'> 창업
+                </td>
+            </tr>
+            <tr>
+                <th> 사진 </th>
+                <td>
+                    <input type='file' name='picture' accept="jpg|gif|png">
+                    <figure></figure>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="회원가입">
+                    <input type="reset" value="취소">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
